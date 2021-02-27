@@ -20,7 +20,7 @@ pipeline {
         stage('run rest app server ') {
             steps {
                 script {
-                    sh 'nohup python rest_app.py &'
+                    sh 'nohup python3.9 rest_app.py &'
 
                 }
             }
@@ -29,7 +29,7 @@ pipeline {
         stage('run backend testing') {
             steps {
                 script {
-                    sh 'python backend_testing.py'
+                    sh 'python3.9 backend_testing.py'
 
                 }
             }
@@ -37,7 +37,7 @@ pipeline {
         stage('run clean environment ') {
             steps {
                 script {
-                    sh ' python clean_environment.py'
+                    sh ' python3.9 clean_environment.py'
 
                 }
             }
@@ -82,7 +82,7 @@ pipeline {
         stage('run docker backend testing') {
             steps {
                 script {
-                    sh ' python docker_backend_testing.py'
+                    sh ' python3.9 docker_backend_testing.py'
                 }
             }
         }
