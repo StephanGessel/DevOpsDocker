@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         registry = "sgessel/my_repo"
-        registryCredential = 'docker_hub'
+        registryCredential = 'sgessel'
         dockerImage = ''
         }
     options {
