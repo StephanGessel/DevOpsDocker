@@ -14,7 +14,7 @@ pipeline {
                 script {
                     properties([pipelineTriggers([pollSCM('*/30 * * * *')])])
                 }
-                git 'https://github.com/keidar/Project3.git'
+                git 'https://github.com/StephanGessel/DevOpsDocker.git'
             }
         }
         stage('run rest app server ') {
@@ -45,7 +45,7 @@ pipeline {
         stage('build docker image ') {
             steps {
                 script {
-                    sh ' docker build -t project3 .'
+                    sh ' docker build -t projectdocker .'
                 }
             }
         }
@@ -89,7 +89,7 @@ pipeline {
          stage('run clean docker environment environment ') {
             steps {
                 script {
-                    sh 'docker rmi project3'
+                    sh 'docker rmi projectdocker'
                     sh 'docker-compose down'
                 }
             }
