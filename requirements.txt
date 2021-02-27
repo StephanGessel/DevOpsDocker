@@ -1,4 +1,4 @@
 flask
 PyMySQL
 configparser
-request
+requests
