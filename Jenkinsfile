@@ -82,7 +82,7 @@ pipeline {
         stage('run docker backend testing') {
             steps {
                 script {
-                    sh ' python docker_backend_testing.py'
+                    sh ' python3.9 docker_backend_testing.py'
                 }
             }
         }
