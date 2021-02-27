@@ -1,6 +1,6 @@
 version: '3'
 services:
   web:
-    image: "keidarb/project3_repo:${BUILD_NUMBER}"
+    image: "sgessel/my_repo:${BUILD_NUMBER}"
     ports:
      - "5000:5000"
