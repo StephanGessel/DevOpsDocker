@@ -1,0 +1,5 @@
+
+flask
+PyMySQL
+python-dotenv
+pathlib
