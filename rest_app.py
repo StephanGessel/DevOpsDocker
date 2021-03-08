@@ -45,4 +45,8 @@ def stop_server():
     os.kill(os.getpid(), signal.SIGINT)
     return 'Server stopped'
 
-app.run(host='127.0.0.1', debug=True, port=5000)
+@app.route('/')
+def health():
+    return '200'
+
+app.run(host='0.0.0.0', port=5000)
