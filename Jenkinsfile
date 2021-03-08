@@ -86,10 +86,43 @@ pipeline {
                 }
             }
         }
-         stage('run clean docker environment environment ') {
+         stage('run clean docker environment ') {
             steps {
                 script {
                     sh 'docker-compose down'
+                }
+            }
+        }
+        stage('deploy helm with latest build') {
+            steps {
+                script {
+                    sh 'helm upgrade --install k8s-check mychart-0.1.0.tgz --set image.tag=${BUILD_NUMBER}'
+                }
+            }
+        }
+        stage('url to file') {
+            steps {
+                script {
+                    sh 'minikube service k8s-check-mychart --url > k8s_url.txt'
+                }
+            }
+        }
+        stage ('wait for pods to start (sleep)') {
+            steps {
+                sleep 30
+            }
+        }
+        stage('k8s check') {
+            steps {
+                script {
+                    sh 'python3.9 k8s_backend_testing.py'
+                }
+            }
+        }
+        stage('clean k8s environment') {
+            steps {
+                script {
+                    sh 'helm delete k8s-check'
                 }
             }
         }
