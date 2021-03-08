@@ -20,7 +20,10 @@ def user(id):
     elif request.method == 'GET':
         try:
             name = get_data(id)
-            return {'status': 'ok', 'name': name}, 200
+            if name:
+                return {'status': 'ok', 'name': name}, 200
+            else:
+                raise Exception
         except:
             return {'status': 'error', 'reason': "No such id"}, 500  # status code
 
